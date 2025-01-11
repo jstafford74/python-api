@@ -17,7 +17,7 @@ class Item(MethodView):
         return item
 
     @blp.arguments(ItemUpdateSchema)
-    @blp.response(200, ItemUpdateSchema)
+    @blp.response(200, ItemSchema)
     def put(self, item_data, item_id):
         # https://bing.teclado.com/python-dictionary-merge-update-operators
         item = ItemModel.query.get(item_id)
