@@ -4,6 +4,7 @@ https://blog.teclado.com/how-to-set-up-visual-studio-code-for-python-development
 
 https://rest-apis-flask.teclado.com/docs/course_intro/
 
+ docker build -t flask-smorest .
 MSYS_NO_PATHCONV=1 docker run -dp 5005:5000 -w /app -v $(pwd -W):/app flask-smorest
 
 docker compose -f docker-compose.yml -f docker-compose.debug.yml up
