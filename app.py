@@ -1,9 +1,11 @@
 from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
+
+# from flask_migrate import Migrate
 from flask_smorest import Api
 
 from blocklist import BLOCKLIST
-from db import db
+from db import db, migrate
 from resources.item import blp as ItemBlueprint
 from resources.store import blp as StoreBlueprint
 from resources.tag import blp as TagBlueprint
@@ -28,6 +30,7 @@ def create_app(db_url=None):
     app.config["PROPAGATE_EXCEPTIONS"] = True
 
     db.init_app(app)
+    migrate.init_app(app, db)
     api = Api(app)
 
     app.config["JWT_SECRET_KEY"] = "277934127487338136525174880714891369218"

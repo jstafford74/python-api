@@ -8,3 +8,5 @@ https://rest-apis-flask.teclado.com/docs/course_intro/
 MSYS_NO_PATHCONV=1 docker run -dp 5005:5000 -w /app -v $(pwd -W):/app flask-smorest
 
 docker compose -f docker-compose.yml -f docker-compose.debug.yml up
+
+flask db migrate
