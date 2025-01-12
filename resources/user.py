@@ -27,6 +27,7 @@ class UserRegister(MethodView):
         user = UserModel(
             username=user_data["username"],
             password=pbkdf2_sha256.hash(user_data["password"]),
+            is_active=True,
         )
         db.session.add(user)
         db.session.commit()
@@ -88,6 +89,12 @@ class User(MethodView):
 
     def delete(self, user_id):
         user = UserModel.query.get_or_404(user_id)
-        db.session.delete(user)
-        db.session.commit()
+
+        if user:
+            user.is_active = False
+        else:
+            abort(401, message="No user exists.")
+
+        db.session.add(user)
+
         return {"message": "User deleted."}, 200

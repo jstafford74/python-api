@@ -12,3 +12,9 @@ MSYS_NO_PATHCONV=1 docker run -dp 5005:5000 -w /app -v $(pwd -W):/app <IMAGE_NAM
 
 Or alternatively:
 `docker compose -f docker-compose.yml -f docker-compose.debug.yml up`
+
+# Docker compose
+
+```
+docker compose up --build --force-recreate --no-deps
+```
