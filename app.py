@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
 
@@ -25,7 +27,9 @@ def create_app(db_url=None):
         "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
     )
     ## Connection string goes here
-    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or "sqlite:///data.db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv(
+        "DATABASE_URL", "sqlite:///data.db"
+    )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["PROPAGATE_EXCEPTIONS"] = True
 
