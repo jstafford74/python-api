@@ -33,7 +33,7 @@ def create_app(db_url=None):
     )
     ## Connection string goes here
     app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv(
-        "DATABASE_URL", "sqlite:///data.db"
+        "DATABASE_URL2", "sqlite:///data.db"
     )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["PROPAGATE_EXCEPTIONS"] = True

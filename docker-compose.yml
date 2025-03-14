@@ -16,5 +16,9 @@ services:
       - POSTGRES_DB=myapp
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -d $${POSTGRES_DB} -U postgres
+      interval: 2s
+      retries: 10
 volumes:
   postgres_data:

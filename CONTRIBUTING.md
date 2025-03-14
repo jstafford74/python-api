@@ -19,6 +19,10 @@ Or alternatively:
 docker compose up --build --force-recreate --no-deps
 ```
 
+# Stop the Docker Desktop
+```
+docker compose down -v
+```
 
 # psql command
 
