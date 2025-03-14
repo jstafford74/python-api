@@ -9,10 +9,14 @@ from flask_smorest import Api
 
 from blocklist import BLOCKLIST
 from db import db, migrate
+from resources.companies import blp as CompanyBlueprint
 from resources.item import blp as ItemBlueprint
 from resources.store import blp as StoreBlueprint
 from resources.tag import blp as TagBlueprint
 from resources.user import blp as UserBlueprint
+
+# from resources.user import blp as UserBlueprint
+# from resources.user import blp as UserBlueprint
 
 
 def create_app(db_url=None):
@@ -106,5 +110,8 @@ def create_app(db_url=None):
     api.register_blueprint(ItemBlueprint)
     api.register_blueprint(StoreBlueprint)
     api.register_blueprint(TagBlueprint)
+    api.register_blueprint(CompanyBlueprint)
+
+    
 
     return app

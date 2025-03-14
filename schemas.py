@@ -50,3 +50,32 @@ class UserSchema(Schema):
     id = fields.Int(dump_only=True)
     username = fields.Str(required=True)
     password = fields.Str(required=True)  ##, load_only=True)
+
+class CompanySchema(Schema):
+    id = fields.Int(dump_only=True)
+    company_name = fields.Str(required=True)
+    workday_url = fields.Url(required=True)
+    equity_ticker = fields.Str(required=False,nullable=True)
+    created_at = fields.DateTime(dump_only=True)
+    updated_at = fields.DateTime(dump_only=True)
+
+class CompanyUpdateSchema(Schema):
+    company_name = fields.Str()
+    workday_url = fields.Url()
+    equity_ticker = fields.Str()
+
+class OpeningSchema(Schema):
+    id = fields.Int(dump_only=True)
+    company_id = fields.Int(required=True)
+    total = fields.Int(required=False)
+    new_york = fields.Int(required=False)
+
+class ApplicationSchema(Schema):
+    id = fields.Int(dump_only=True)
+    company_id = fields.Int(required=True)
+    job_title = fields.Str(required=True)
+    job_req = fields.Str(required=False)
+    status = fields.Str(required=False)
+    date_submitted = fields.Date(required=False)
+    created_at = fields.DateTime(dump_only=True)
+    updated_at = fields.DateTime(dump_only=True)
